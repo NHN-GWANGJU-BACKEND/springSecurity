@@ -1,0 +1,159 @@
+POST /api/residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentSerialNumber" : "1",
+  "name": "남길동",
+  "registrationNumber": "130914-1234561",
+  "genderCode": "남",
+  "birthDate": "1913-09-14T07:22:00",
+  "birthPlaceCode": "자택",
+  "registrationBaseAddress": "경기도 성남시 분당구 대왕판교로645번길",
+  "deathDate": "2021-04-29T09:03:00",
+  "deathPlaceCode": "주택",
+  "deathPlaceAddress": "강원도 고성군 금강산로 290번길",
+  "loginId" : "gildong",
+  "pwd": "12345"
+}
+
+###
+
+POST /api/residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentSerialNumber" : "2",
+  "name": "남석환",
+  "registrationNumber": "540514-1234562",
+  "genderCode": "남",
+  "birthDate": "1954-05-14T17:30:00",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "경기도 성남시 분당구 대왕판교로645번길",
+  "deathDate": null,
+  "deathPlaceCode": null,
+  "deathPlaceAddress": null,
+  "loginId" : "suckhwan",
+  "pwd": "12345"
+}
+
+###
+
+POST /api/residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentSerialNumber" : "3",
+  "name": "박한나",
+  "registrationNumber": "551022-1234563",
+  "genderCode": "여",
+  "birthDate": "1955-10-22T11:15:00",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "서울특별시 중구 세종대로 110번길",
+  "deathDate": null,
+  "deathPlaceCode": null,
+  "deathPlaceAddress": null,
+  "loginId" : "hanna",
+  "pwd": "12345"
+}
+
+###
+
+POST /api/residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentSerialNumber" : "4",
+  "name": "남기준",
+  "registrationNumber": "790510-1234564",
+  "genderCode": "남",
+  "birthDate": "1979-05-10T20:45:00",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "경기도 성남시 분당구 대왕판교로645번길",
+  "deathDate": null,
+  "deathPlaceCode": null,
+  "deathPlaceAddress": null,
+  "loginId" : "kijoon",
+  "pwd": "12345"
+}
+
+###
+
+POST /api/residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentSerialNumber" : "5",
+  "name": "이주은",
+  "registrationNumber": "820821-1234565",
+  "genderCode": "여",
+  "birthDate": "1982-08-21T01:28:00",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "경기도 수원시 팔달구 효원로 1번길",
+  "deathDate": null,
+  "deathPlaceCode": null,
+  "deathPlaceAddress": null,
+  "loginId" : "jooeun",
+  "pwd": "12345"
+}
+
+###
+
+POST /api/residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentSerialNumber" : "6",
+  "name": "이선미",
+  "registrationNumber": "851205-1234566",
+  "genderCode": "여",
+  "birthDate": "1985-12-05T22:01:00",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "경기도 수원시 팔달구 효원로 1번길",
+  "deathDate": null,
+  "deathPlaceCode": null,
+  "deathPlaceAddress": null,
+  "loginId" : "sunmi",
+  "pwd": "12345"
+}
+
+###
+
+POST /api/residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentSerialNumber" : "7",
+  "name": "남기석",
+  "registrationNumber": "120315-1234567",
+  "genderCode": "남",
+  "birthDate": "2012-03-15T14:59:00",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "경기도 성남시 분당구 대왕판교로645번길",
+  "deathDate": null,
+  "deathPlaceCode": null,
+  "deathPlaceAddress": null,
+  "loginId" : "kisuck",
+  "pwd": "12345"
+}
+
+###
+
+PUT /api/residents/4 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "name": "남기준",
+  "registrationBaseAddress": "경기도 성남시 분당구 대왕판교로645번길",
+  "deathDate": null,
+  "deathPlaceCode": null,
+  "deathPlaceAddress": null,
+  "email" : "tagkdj1@naver.com"
+}

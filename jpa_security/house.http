@@ -1,0 +1,16 @@
+POST /household HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "householdResidentSerialNumber": 4,
+  "householdCompositionDate": "2009-10-02",
+  "householdCompositionReasonCode": "세대분리",
+  "currentHouseMovementAddress": "경기도 성남시 분당구 대왕판교로 645번길"
+}
+
+###
+
+DELETE /household/2 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json

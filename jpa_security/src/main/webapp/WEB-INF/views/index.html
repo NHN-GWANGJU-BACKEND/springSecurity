@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <span sec:authentication="name"/>
+    <a href="/logout">Logout</a>
+</div>
+<div sec:authorize="!isAuthenticated()">
+    <a href="https://github.com/login/oauth/authorize?client_id=e73300815e1fc50cbfce&redirect_uri=http://localhost:8080/auth/github/callback">
+        Github Login</a><br/>
+    <a href="/login">Login</a>
+</div>
+<a href="/residents?page=0&size=5">주민 목록 이동</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+POST /household/1/movement HTTP/1.1
+Host: localhost:8080
+Accept: */*
+Content-Type: application/json
+
+{
+  "houseMovementReportDate" : "2022-12-30",
+  "houseMovementAddress": "광주광역시 서구 상무버들로 40번길 30"
+}
+
+
+###
+
+PUT /household/1/movement/20221230 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "houseMovementAddress": "광주광역시 북구 상무버들로 40번길 40"
+}
+
+###
+
+DELETE /household/1/movement/20221230 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json

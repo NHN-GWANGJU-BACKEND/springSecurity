@@ -1,0 +1,32 @@
+POST /residents/birth HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentSerialNumber": 8,
+  "birthDeathTypeCode": "출생",
+  "reportResidentSerialNumber": 4,
+  "birthDeathReportDate": "1998-10-10",
+  "birthReportQualificationsCode": "부",
+  "deathReportQualificationsCode": null,
+  "emailAddress": "nam@nhnad.co.kr",
+  "phoneNumber": "010-1234-5678"
+}
+
+###
+
+
+PUT /residents/birth/8 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "emailAddress": "taewon@nhnad.co.kr",
+  "phoneNumber": "010-5678-1234"
+}
+
+###
+
+DELETE /residents/birth/8 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>posts</title>
+    <style>
+        body {
+            padding: 40px;
+        }
+
+        a:visited {
+            color: blue;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        #pageContainer {
+            display: flex;
+            padding-left: 0;
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .page-item:last-child {
+            padding: 6px 12px;
+            border: 0.6px solid #D2D2D2;
+        }
+
+        .page-item {
+            padding: 6px 12px;
+            border-left: 0.6px solid #D2D2D2;
+            border-top: 0.6px solid #D2D2D2;
+            border-bottom: 0.6px solid #D2D2D2;
+        }
+
+        .page-item:hover {
+            background-color: #cecece;
+        }
+
+        .page-link {
+            text-decoration: none;
+        }
+
+        .deleteContainer {
+            cursor: pointer;
+            color: blue;
+        }
+
+    </style>
+
+    <script>
+        function deleteConfirm(location) {
+            if (confirm("정말 삭제하시겠습니까?")) {
+                let f = document.createElement('form');
+                f.setAttribute('method', 'post');
+                f.setAttribute('action', '/residents/' + location);
+                document.body.appendChild(f);
+                f.submit();
+            }
+        }
+    </script>
+</head>
+<body>
+<h2 style="margin-bottom: 45px; margin-top: 20px">NHN DB_APP2 JPA Board!!</h2>
+<table width="80%">
+    <thead>
+    <tr>
+        <th>순번</th>
+        <th>이름</th>
+        <th>가족관계증명서</th>
+        <th>주민등록등본</th>
+        <th>출생신고서</th>
+        <th>사망신고서</th>
+        <th>증명서 발급 목록</th>
+        <th>삭제</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="resident : ${residents}" align="center">
+        <td th:text="${resident.serialNumber}"></td>
+        <td th:text="${resident.name}"></td>
+        <td>
+            <form action="/certificates" method="post">
+                <input type="hidden" name="serialNumber" th:value="${resident.serialNumber}">
+                <input type="hidden" name="type" value="가족관계증명서">
+                <input type="submit" value="가족관계증명서">
+            </form>
+        </td>
+        <td>
+            <form action="/certificates" method="post">
+                <input type="hidden" name="serialNumber" th:value="${resident.serialNumber}">
+                <input type="hidden" name="type" value="주민등록등본">
+                <input type="submit" value="주민등록등본">
+            </form>
+        </td>
+        <td>
+            <form action="/certificates" method="post" th:if="${resident.birth}">
+                <input type="hidden" name="serialNumber" th:value="${resident.serialNumber}">
+                <input type="hidden" name="type" value="출생신고서">
+                <input type="submit" value="출생신고서">
+            </form>
+        </td>
+        <td>
+            <form action="/certificates" method="post" th:if="${resident.death}">
+                <input type="hidden" name="serialNumber" th:value="${resident.serialNumber}">
+                <input type="hidden" name="type" value="사망신고서">
+                <input type="submit" value="사망신고서">
+            </form>
+        </td>
+        <td>
+            <a th:href="'/certificates/'+${resident.serialNumber}">증명서 발급 목록</a>
+        </td>
+        <td>
+            <div class="deleteContainer"
+                 th:onclick="|javascript:deleteConfirm(${resident.serialNumber})|">삭제
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<nav>
+    <div th:with="start=${(pages.number/maxPage) * maxPage + 1},
+                  end=(${(pages.totalPages == 0) ? 1 : (start + (maxPage - 1) < pages.totalPages ? start + (maxPage - 1) : pages.totalPages)})">
+        <ul id="pageContainer">
+            <li class="page-item">
+                <a class="page-link" href="/residents?size=5&page=0">처음</a>
+            </li>
+            <li class="page-item" th:if="${start > 1}">
+                <a class="page-link" th:href="'/residents?size=5&page='+${start - maxPage}">이전</a>
+            </li>
+            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}">
+                <a class="page-link" th:href="'/residents?size=5&page='+${page - 1}" th:text="${page}"></a>
+            </li>
+            <li class="page-item" th:if="${end < pages.totalPages}">
+                <a class="page-link" th:href="'/residents?size=5&page='+${start + maxPage}">다음</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="'/residents?size=5&page='+${pages.totalPages - 1}">마지막</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
